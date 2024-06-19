@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
@@ -14,6 +16,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -39,6 +42,7 @@ public class baseClass {
 	public static WebDriverWait wait;
 	public static Properties prop;
 	public Logger log;
+	 public static Logger logger = LogManager.getLogger(baseClass.class);
 
 	static {
 		try {
@@ -54,11 +58,11 @@ public class baseClass {
 
 	@Before
 	public void setup() {
-		log=LogManager.getLogger(this.getClass());
+		  logger.info("Setting up the driver and browser properties");
 
 		String br = prop.getProperty("browser");
 		if (br.equals("chrome")) {
-			ChromeOptions option = new ChromeOptions();
+		ChromeOptions option = new ChromeOptions();
 			option.addArguments("--incognito");
 			driver = new ChromeDriver(option);
 		} else if (br.equals("firefox")) {
@@ -77,7 +81,7 @@ public class baseClass {
 	}
 
 	public void explicitwait(WebElement elm, String type) {
-		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
 		switch (type) {
 		case "visibilityof":
@@ -89,6 +93,11 @@ public class baseClass {
 		case "invisibilityofelement":
 			wait.until(ExpectedConditions.invisibilityOf(elm));
 			break;
+		case "visibilityoftext":
+			wait.until(ExpectedConditions.textToBePresentInElement(elm, type));
+			break;
+		
+		
 		}
 	}
 
@@ -102,6 +111,12 @@ public class baseClass {
 		}
 	}
 
+	public void handleBrowserPopup(String msg) {
+		ChromeOptions options = new ChromeOptions();
+		 options.addArguments(msg);
+//		 use-fake-ui-for-media-stream
+//	     use-fake-device-for-media-stream
+	}
 	public void windowalert(String type) {
 		Alert a = driver.switchTo().alert();
 		switch (type) {
@@ -163,4 +178,27 @@ public class baseClass {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOfAllElements(list));
 	}
+	public String captureScreenshot(String tname) {
+//		SimpleDateFormat sd=new SimpleDateFormat("yy.mm.dd.hh.mm.ss");
+//		Date dt=new Date();
+//		sd.format(dt);
+		
+		//Or
+		
+		String timestamp=new SimpleDateFormat("yy.mm.dd.hh.mm.ss").format(new Date());
+		TakesScreenshot takescreenshot=(TakesScreenshot)driver;
+		File source=takescreenshot.getScreenshotAs(OutputType.FILE);
+		String destination=System.getProperty("user.dir")+"\\screenshots\\"+tname+"_"+timestamp+".png";
+		//File target=new File(destination);
+		try {
+			FileUtils.copyFile(source, new File(destination));
+		}
+		catch(Exception e) {
+			e.getMessage();
+		}
+		
+		return destination;
+		
+		
+}
 }

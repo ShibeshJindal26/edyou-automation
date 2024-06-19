@@ -1,27 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-06-17T11:29:57 IST" name="Default suite" finished-at="2024-06-17T11:30:30 IST" duration-ms="32871">
+  <suite started-at="2024-06-19T10:08:01 IST" name="OpencartSuite" finished-at="2024-06-19T10:11:07 IST" duration-ms="186624">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumber.options.testRunner@5b247367]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumber.options.testRunner@62435e70]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2024-06-17T11:29:57 IST" name="Default test" finished-at="2024-06-17T11:30:30 IST" duration-ms="32871">
+    <test started-at="2024-06-19T10:08:01 IST" name="OpenCartTest1" finished-at="2024-06-19T10:11:07 IST" duration-ms="186624">
       <class name="cucumber.options.testRunner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:cucumber.options.testRunner@5b247367]" started-at="2024-06-17T11:29:57 IST" name="setUpClass" finished-at="2024-06-17T11:29:57 IST" duration-ms="414" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:cucumber.options.testRunner@62435e70]" started-at="2024-06-19T10:08:01 IST" name="setUpClass" finished-at="2024-06-19T10:08:02 IST" duration-ms="542" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@4052c8c2]]>
+                <![CDATA[org.testng.TestRunner@6d001fbe]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumber.options.testRunner@5b247367]" started-at="2024-06-17T11:29:57 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-06-17T11:30:29 IST" duration-ms="31666" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:cucumber.options.testRunner@62435e70]" started-at="2024-06-19T10:08:02 IST" name="setup" finished-at="2024-06-19T10:08:02 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumber.options.testRunner@62435e70]" started-at="2024-06-19T10:08:02 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-06-19T10:08:39 IST" duration-ms="37398" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["User should be able to maximize chat screen after clicking on maximizer."]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["verify chatbot functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumber.options.testRunner@62435e70]" started-at="2024-06-19T10:08:39 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-06-19T10:08:59 IST" duration-ms="20150" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["User should be able to minimize chat screen after clicking on maximizer."]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["verify chatbot functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumber.options.testRunner@62435e70]" started-at="2024-06-19T10:08:59 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-06-19T10:09:16 IST" duration-ms="16884" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Avatar video should be displayed"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["verify chatbot functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumber.options.testRunner@62435e70]" started-at="2024-06-19T10:09:16 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-06-19T10:09:35 IST" duration-ms="18617" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -37,11 +89,79 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:cucumber.options.testRunner@5b247367]" started-at="2024-06-17T11:30:29 IST" name="tearDownClass" finished-at="2024-06-17T11:30:30 IST" duration-ms="678" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumber.options.testRunner@62435e70]" started-at="2024-06-19T10:09:35 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-06-19T10:09:55 IST" duration-ms="19909" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Show hannah"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["verify chatbot functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumber.options.testRunner@62435e70]" started-at="2024-06-19T10:09:55 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-06-19T10:10:24 IST" duration-ms="29057" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Check for greeting messages response"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["verify chatbot functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumber.options.testRunner@62435e70]" started-at="2024-06-19T10:10:24 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-06-19T10:10:47 IST" duration-ms="22952" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Audio should be working"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["verify chatbot functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumber.options.testRunner@62435e70]" started-at="2024-06-19T10:10:47 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-06-19T10:11:07 IST" duration-ms="19901" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Mic button should be working"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["verify chatbot functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:cucumber.options.testRunner@62435e70]" started-at="2024-06-19T10:11:07 IST" name="teardown" finished-at="2024-06-19T10:11:07 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:cucumber.options.testRunner@62435e70]" started-at="2024-06-19T10:11:07 IST" name="tearDownClass" finished-at="2024-06-19T10:11:07 IST" duration-ms="518" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
       </class> <!-- cucumber.options.testRunner -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- OpenCartTest1 -->
+  </suite> <!-- OpencartSuite -->
 </testng-results>
