@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Surefire test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/3/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>1/2/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Jun 21 12:27:16 IST 2024</td>
+<td>Started on:</td><td>Fri Jun 21 12:57:37 IST 2024</td>
 </tr>
-<tr><td>Total time:</td><td>40 seconds (40697 ms)</td>
+<tr><td>Total time:</td><td>127 seconds (127077 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,46 +76,16 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='cucumber.options.testRunner.runScenario()'><b>runScenario</b><br>Test class: cucumber.options.testRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Check for greeting messages response", "verify chatbot functionality"</td>
-<td><div><pre>org.openqa.selenium.NoSuchElementException: Unable to find element with locator By.xpath: //span[normalize-space()=&apos;Hi, hope you are doing well. How can I help?&apos;]
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: &apos;4.14.1&apos;, revision: &apos;03f8ede370&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.2&apos;
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:168)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
-	at pageObject.homePage.Response_message_should_be_as_expected(homePage.java:137)
-	at stepDefination.homeStep.Response_message_should_be_as_expected(homeStep.java:90)
-	at ✽.Response message should be as expected(file:///D:/java%20eclipse/EdYou_automation_project/./src/test/java/features/home.feature:36)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1679022055", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1679022055'><pre>org.openqa.selenium.NoSuchElementException: Unable to find element with locator By.xpath: //span[normalize-space()=&apos;Hi, hope you are doing well. How can I help?&apos;]
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: &apos;4.14.1&apos;, revision: &apos;03f8ede370&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.2&apos;
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:168)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
-	at pageObject.homePage.Response_message_should_be_as_expected(homePage.java:137)
-	at stepDefination.homeStep.Response_message_should_be_as_expected(homeStep.java:90)
-	at ✽.Response message should be as expected(file:///D:/java%20eclipse/EdYou_automation_project/./src/test/java/features/home.feature:36)
-</pre></div></td>
-<td>39</td>
-<td>cucumber.options.testRunner@743cb8e0</td></tr>
-<tr>
 <td title='cucumber.options.testRunner.runScenario()'><b>runScenario</b><br>Test class: cucumber.options.testRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Check openai functionality", "verify chatbot functionality"</td>
-<td><div><pre>org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[contains(text(),&apos;Dhoni is a former Indian cricketer&apos;)]&quot;}
   (Session info: chrome=126.0.6478.63)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Build info: version: &apos;4.14.1&apos;, revision: &apos;03f8ede370&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.2&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [64028c6fbb40308ed19a9605b627de95, findElement {using=xpath, value=//span[@id=&apos;maximizeAvatar&apos;]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.63, chrome: {chromedriverVersion: 126.0.6478.63 (df799988fdc9..., userDataDir: C:\Users\LAXMAN~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56113}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56113/devtoo..., se:cdpVersion: 126.0.6478.63, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 64028c6fbb40308ed19a9605b627de95
+Command: [4708808311c66db8455a106bed9c3f79, findElement {using=xpath, value=//*[contains(text(),&apos;Dhoni is a former Indian cricketer&apos;)]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.63, chrome: {chromedriverVersion: 126.0.6478.63 (df799988fdc9..., userDataDir: C:\Users\LAXMAN~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58298}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58298/devtoo..., se:cdpVersion: 126.0.6478.63, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 4708808311c66db8455a106bed9c3f79
 	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
 	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
 	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
@@ -127,19 +97,19 @@ Session ID: 64028c6fbb40308ed19a9605b627de95
 	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
-	at pageObject.homePage.clickonMaximizer(homePage.java:33)
-	at stepDefination.homeStep.click_on_maximizer(homeStep.java:24)
-	at ✽.Click on maximizer(file:///D:/java%20eclipse/EdYou_automation_project/./src/test/java/features/home.feature:51)
-... Removed 3 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace355222677", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace355222677'><pre>org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
+	at pageObject.homePage.Response_should_be_generate(homePage.java:195)
+	at stepDefination.homeStep.Response_should_be_generate(homeStep.java:132)
+	at ✽.Response should be generate(file:///D:/java%20eclipse/EdYou_automation_project/./src/test/java/features/home.feature:54)
+... Removed 3 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1155300221", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1155300221'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[contains(text(),&apos;Dhoni is a former Indian cricketer&apos;)]&quot;}
   (Session info: chrome=126.0.6478.63)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Build info: version: &apos;4.14.1&apos;, revision: &apos;03f8ede370&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.2&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [64028c6fbb40308ed19a9605b627de95, findElement {using=xpath, value=//span[@id=&apos;maximizeAvatar&apos;]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.63, chrome: {chromedriverVersion: 126.0.6478.63 (df799988fdc9..., userDataDir: C:\Users\LAXMAN~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56113}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56113/devtoo..., se:cdpVersion: 126.0.6478.63, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 64028c6fbb40308ed19a9605b627de95
+Command: [4708808311c66db8455a106bed9c3f79, findElement {using=xpath, value=//*[contains(text(),&apos;Dhoni is a former Indian cricketer&apos;)]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.63, chrome: {chromedriverVersion: 126.0.6478.63 (df799988fdc9..., userDataDir: C:\Users\LAXMAN~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58298}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58298/devtoo..., se:cdpVersion: 126.0.6478.63, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 4708808311c66db8455a106bed9c3f79
 	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
@@ -154,23 +124,23 @@ Session ID: 64028c6fbb40308ed19a9605b627de95
 	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
-	at pageObject.homePage.clickonMaximizer(homePage.java:33)
-	at stepDefination.homeStep.click_on_maximizer(homeStep.java:24)
-	at ✽.Click on maximizer(file:///D:/java%20eclipse/EdYou_automation_project/./src/test/java/features/home.feature:51)
+	at pageObject.homePage.Response_should_be_generate(homePage.java:195)
+	at stepDefination.homeStep.Response_should_be_generate(homeStep.java:132)
+	at ✽.Response should be generate(file:///D:/java%20eclipse/EdYou_automation_project/./src/test/java/features/home.feature:54)
 </pre></div></td>
-<td>0</td>
+<td>51</td>
 <td>cucumber.options.testRunner@743cb8e0</td></tr>
 <tr>
 <td title='cucumber.options.testRunner.runScenario()'><b>runScenario</b><br>Test class: cucumber.options.testRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Mic button should be working", "verify chatbot functionality"</td>
-<td><div><pre>org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//img[@src=&apos;../../assets/micNewOrange.png&apos;]&quot;}
   (Session info: chrome=126.0.6478.63)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Build info: version: &apos;4.14.1&apos;, revision: &apos;03f8ede370&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.2&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [64028c6fbb40308ed19a9605b627de95, findElement {using=xpath, value=//img[@id=&apos;voiceId&apos;]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.63, chrome: {chromedriverVersion: 126.0.6478.63 (df799988fdc9..., userDataDir: C:\Users\LAXMAN~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56113}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56113/devtoo..., se:cdpVersion: 126.0.6478.63, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 64028c6fbb40308ed19a9605b627de95
+Command: [50705ec3f88c09176facfc407a9e4db4, findElement {using=xpath, value=//img[@src=&apos;../../assets/micNewOrange.png&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.63, chrome: {chromedriverVersion: 126.0.6478.63 (df799988fdc9..., userDataDir: C:\Users\LAXMAN~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58199}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58199/devtoo..., se:cdpVersion: 126.0.6478.63, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 50705ec3f88c09176facfc407a9e4db4
 	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
 	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
 	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
@@ -182,19 +152,19 @@ Session ID: 64028c6fbb40308ed19a9605b627de95
 	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
-	at pageObject.homePage.Click_on_mic_button(homePage.java:171)
-	at stepDefination.homeStep.Click_on_mic_button(homeStep.java:114)
-	at ✽.Click on mic button(file:///D:/java%20eclipse/EdYou_automation_project/./src/test/java/features/home.feature:46)
-... Removed 3 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1768797728", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1768797728'><pre>org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
+	at pageObject.homePage.Mic_button_should_be_enable(homePage.java:180)
+	at stepDefination.homeStep.Mic_button_should_be_enable(homeStep.java:120)
+	at ✽.Mic button should be enable(file:///D:/java%20eclipse/EdYou_automation_project/./src/test/java/features/home.feature:47)
+... Removed 3 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1260308116", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1260308116'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//img[@src=&apos;../../assets/micNewOrange.png&apos;]&quot;}
   (Session info: chrome=126.0.6478.63)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Build info: version: &apos;4.14.1&apos;, revision: &apos;03f8ede370&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.2&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [64028c6fbb40308ed19a9605b627de95, findElement {using=xpath, value=//img[@id=&apos;voiceId&apos;]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.63, chrome: {chromedriverVersion: 126.0.6478.63 (df799988fdc9..., userDataDir: C:\Users\LAXMAN~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56113}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56113/devtoo..., se:cdpVersion: 126.0.6478.63, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 64028c6fbb40308ed19a9605b627de95
+Command: [50705ec3f88c09176facfc407a9e4db4, findElement {using=xpath, value=//img[@src=&apos;../../assets/micNewOrange.png&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.63, chrome: {chromedriverVersion: 126.0.6478.63 (df799988fdc9..., userDataDir: C:\Users\LAXMAN~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58199}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58199/devtoo..., se:cdpVersion: 126.0.6478.63, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 50705ec3f88c09176facfc407a9e4db4
 	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
@@ -209,11 +179,25 @@ Session ID: 64028c6fbb40308ed19a9605b627de95
 	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
-	at pageObject.homePage.Click_on_mic_button(homePage.java:171)
-	at stepDefination.homeStep.Click_on_mic_button(homeStep.java:114)
-	at ✽.Click on mic button(file:///D:/java%20eclipse/EdYou_automation_project/./src/test/java/features/home.feature:46)
+	at pageObject.homePage.Mic_button_should_be_enable(homePage.java:180)
+	at stepDefination.homeStep.Mic_button_should_be_enable(homeStep.java:120)
+	at ✽.Mic button should be enable(file:///D:/java%20eclipse/EdYou_automation_project/./src/test/java/features/home.feature:47)
 </pre></div></td>
-<td>0</td>
+<td>49</td>
+<td>cucumber.options.testRunner@743cb8e0</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='cucumber.options.testRunner.runScenario()'><b>runScenario</b><br>Test class: cucumber.options.testRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Check for greeting messages response", "verify chatbot functionality"</td>
+<td></td>
+<td>25</td>
 <td>cucumber.options.testRunner@743cb8e0</td></tr>
 </table><p>
 </body>

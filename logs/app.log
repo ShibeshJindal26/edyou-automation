@@ -575,3 +575,8 @@
 12:27:17.243 [main] INFO  utilities.Log - Test execution started.
 12:27:17.369 [main] INFO  helper.baseClass - Setting up the driver and browser properties
 12:27:56.707 [main] INFO  utilities.Log - Test execution finished.
+12:57:38.607 [main] INFO  utilities.Log - Test execution started.
+12:57:38.743 [main] INFO  helper.baseClass - Setting up the driver and browser properties
+12:58:04.028 [main] INFO  helper.baseClass - Setting up the driver and browser properties
+12:58:53.037 [main] INFO  helper.baseClass - Setting up the driver and browser properties
+12:59:44.543 [main] INFO  utilities.Log - Test execution finished.
