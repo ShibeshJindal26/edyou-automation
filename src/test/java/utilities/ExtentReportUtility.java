@@ -16,66 +16,69 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 import helper.baseClass;
 
 public class ExtentReportUtility implements ITestListener {
-	public ExtentSparkReporter sparkReporter;  // UI of the report
-	public ExtentReports extent;  //populate common info on the report
-	public ExtentTest test; // creating test case entries in the report and update status of the test methods
-	String repname;
+    private ExtentSparkReporter sparkReporter;  // UI of the report
+    private ExtentReports extent;  // Populates the common information on the report
+    public static ThreadLocal<ExtentTest> test = new ThreadLocal<>(); // Create test case entries in the report and update status of the test methods
+    
+    private String repname;
 
-	public void onStart(ITestContext context) {
-		String timestamp=new SimpleDateFormat("yyyy.mm.dd.hh.mm.ss").format(new Date());
-			repname="Test-Report-"+timestamp+".html";
-		sparkReporter=new ExtentSparkReporter(".\\reports\\"+repname);//specify location of the report
-		
-		sparkReporter.config().setDocumentTitle("Automation Report"); // TiTle of report
-		sparkReporter.config().setReportName("Functional Testing"); // name of the report
-		sparkReporter.config().setTheme(Theme.DARK);
-		
-		extent=new ExtentReports();
-		extent.attachReporter(sparkReporter);
-		
-		extent.setSystemInfo("Computer Name","localhost");
-		extent.setSystemInfo("Environment","QA");
-		extent.setSystemInfo("Tester Name","Laxman Singh");
-		extent.setSystemInfo("os","Windows 11");
-		extent.setSystemInfo("Browser name","Chrome,Firefox,Edge");
-					
-	}
+    @Override
+    public void onStart(ITestContext context) {
+        String timestamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        repname = "Test-Report-" + timestamp + ".html";
+        sparkReporter = new ExtentSparkReporter(".\\reports\\" + repname); // Specify location of the report
 
+        sparkReporter.config().setDocumentTitle("Automation Report"); // Title of the report
+        sparkReporter.config().setReportName("Functional Testing"); // Name of the report
+        sparkReporter.config().setTheme(Theme.DARK);
 
-	public void onTestSuccess(ITestResult result) {
-		
-		test = extent.createTest(result.getName()); // create a new entry in the report
-		test.log(Status.PASS, "Test case PASSED is:" + result.getName()); // update status p/f/s
-		
-	}
+        extent = new ExtentReports();
+        extent.attachReporter(sparkReporter);
 
-	public void onTestFailure(ITestResult result) {
-		
-		test = extent.createTest(result.getName());
-		test.log(Status.FAIL, "Test case FAILED is:" + result.getName());
-		test.log(Status.FAIL, "Test Case FAILED cause is: " + result.getThrowable()); 
-		try {
-			baseClass bs=new baseClass();
-			String imgPath=bs.captureScreenshot(result.getName());
-			test.addScreenCaptureFromPath(imgPath);
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
-					
-	}
+        extent.setSystemInfo("Computer Name", "localhost");
+        extent.setSystemInfo("Environment", "QA");
+        extent.setSystemInfo("Tester Name", "Laxman Singh");
+        extent.setSystemInfo("OS", "Windows 11");
+        extent.setSystemInfo("Browser name", "Chrome, Firefox, Edge");
+    }
 
-	public void onTestSkipped(ITestResult result) {
+    @Override
+    public void onTestStart(ITestResult result) {
+        // Using result.getTestClass().getRealClass().getSimpleName() to get the class name
+        String className = result.getTestClass().getRealClass().getSimpleName();
+        // Creating test with class name and method name
+        test.set(extent.createTest(className + " - " + result.getMethod().getMethodName()));
+    }
 
-		test = extent.createTest(result.getName());
-		test.log(Status.SKIP, "Test case SKIPPED is:" + result.getName());
-		
-	}
+    @Override
+    public void onTestSuccess(ITestResult result) {
+        test.get().log(Status.PASS, "Test case PASSED: " + result.getMethod().getMethodName()); // Update status
+    }
 
-	
-	public void onFinish(ITestContext context) {
-		
-		extent.flush();
-	}
+    @Override
+    public void onTestFailure(ITestResult result) {
+        test.get().log(Status.FAIL, "Test case FAILED: " + result.getMethod().getMethodName());
+        test.get().log(Status.FAIL, "Cause: " + result.getThrowable());
 
+        try {
+            // Capture screenshot if possible
+            baseClass bs = new baseClass();
+            String imgPath = baseClass.getDriver() != null ? bs.captureScreenshot(result.getMethod().getMethodName()) : "Driver not initialized, screenshot not captured";
+            if (!imgPath.equals("Driver not initialized, screenshot not captured")) {
+                test.get().addScreenCaptureFromPath(imgPath); // Add screenshot path to report
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onTestSkipped(ITestResult result) {
+        test.get().log(Status.SKIP, "Test case SKIPPED: " + result.getMethod().getMethodName());
+    }
+
+    @Override
+    public void onFinish(ITestContext context) {
+        extent.flush(); // Finalize the report
+    }
 }
