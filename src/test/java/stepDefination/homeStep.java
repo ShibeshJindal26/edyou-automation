@@ -4,6 +4,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.Status;
+
 import helper.baseClass;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
@@ -20,6 +22,7 @@ public class homeStep {
     @Test
     @When("Click on maximizer")
     public void click_on_maximizer() {
+    	baseClass.test.log(Status.PASS,"maximize button clicked");
         System.out.println(new Throwable().getStackTrace()[0].getMethodName());
         hm.clickonMaximizer();
         logger.debug("Click on maximizer");

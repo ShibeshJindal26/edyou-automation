@@ -1,0 +1,10 @@
+ <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="config.xsd">
+        <encoding>UTF-8</encoding>
+        <protocol>HTTPS</protocol>
+        <title>Automation Report</title>
+        <reportName>Extent Report</reportName>
+        <theme>dark</theme>
+        <testViewChartLocation>top</testViewChartLocation>
+        <chartsVisibilityOnOpen>true</chartsVisibilityOnOpen>
+    </configuration>

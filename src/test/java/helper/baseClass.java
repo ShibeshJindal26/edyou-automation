@@ -22,6 +22,11 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -41,6 +46,8 @@ public class baseClass {
     private static WebDriverWait wait;
     private static Properties prop;
     public static Logger logger = LogManager.getLogger(baseClass.class);
+    protected static ExtentReports extent;
+    public static ExtentTest test;
 
     static {
         try {
@@ -54,7 +61,9 @@ public class baseClass {
     }
 
     @Before
-    public void setup() {
+    public void setup(Scenario scenario) throws IOException {
+    	extent = ExtentManager.getInstance();
+		test = extent.createTest(scenario.getName());
         if (driver == null) {
             logger.info("Setting up the driver and browser properties");
 
@@ -189,20 +198,29 @@ public class baseClass {
         Assert.assertEquals(actualSize, expectedSize);
     }
 
-    @After
-    public void tearDown(Scenario scenario) {
-        if (scenario.isFailed()) {
-            String testName = scenario.getName().replaceAll(" ", "_");
-            captureScreenshot(testName);
-        }
-        if (driver != null) {
-            driver.quit();
-            driver = null; // Reset driver instance
-        } else {
-            logger.warn("WebDriver instance not found in tearDown method.");
-        }
-    }
     
+    @After
+	public void tearDown(Scenario s) {
+		try {
+	
+			if (s.isFailed()) {
+				TakesScreenshot ts = (TakesScreenshot) driver;
+				File src = ts.getScreenshotAs(OutputType.FILE);
+				File target = new File(System.getProperty("user.dir") + "/Screenshots/" + s.getName() + ".png");
+				FileUtils.copyFile(src, target);
+				 test.log(Status.FAIL, "Scenario failed: " + s.getName());
+	                test.addScreenCaptureFromPath(target.getPath());
+	            } else {
+	                test.log(Status.PASS, "Scenario passed: " + s.getName());
+	            
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			driver.quit();
+			extent.flush();
+		}
+	}
     // Additional reusable methods for Actions class can be added here
 
     // Example: Method to perform mouse hover
