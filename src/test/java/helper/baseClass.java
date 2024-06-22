@@ -1,23 +1,14 @@
 package helper;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Properties;
-import java.util.Set;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,10 +22,18 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.util.Date;
+import java.util.List;
+import java.util.Properties;
+import java.util.Set;
 
 public class baseClass {
 
@@ -49,6 +48,7 @@ public class baseClass {
             prop = new Properties();
             prop.load(file);
         } catch (IOException e) {
+            logger.error("Failed to load environment properties file: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -58,26 +58,32 @@ public class baseClass {
         if (driver == null) {
             logger.info("Setting up the driver and browser properties");
 
-            String br = prop.getProperty("browser");
-            if (br.equals("chrome")) {
-                ChromeOptions option = new ChromeOptions();
-                option.addArguments("--incognito");
-                driver = new ChromeDriver(option);
-            } else if (br.equals("firefox")) {
-                FirefoxOptions option = new FirefoxOptions();
-                option.addArguments("--incognito");
-                driver = new FirefoxDriver(option);
-                logger.info("Browser launched");
-            } else if (br.equals("edge")) {
-                EdgeOptions option = new EdgeOptions();
-                option.addArguments("--incognito");
-                driver = new EdgeDriver(option);
+            String browser = prop.getProperty("browser");
+            if (browser.equalsIgnoreCase("chrome")) {
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--incognito");
+                driver = new ChromeDriver(options);
+            } else if (browser.equalsIgnoreCase("firefox")) {
+                FirefoxOptions options = new FirefoxOptions();
+                options.addArguments("--incognito");
+                driver = new FirefoxDriver(options);
+            } else if (browser.equalsIgnoreCase("edge")) {
+                EdgeOptions options = new EdgeOptions();
+                options.addArguments("--incognito");
+                driver = new EdgeDriver(options);
+            } else {
+                logger.error("Unsupported browser: " + browser);
+                throw new IllegalArgumentException("Unsupported browser: " + browser);
             }
 
-            driver.get(prop.getProperty("url"));
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
             wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+            String url = prop.getProperty("url");
+            if (url != null && !url.isEmpty()) {
+                driver.get(url);
+            }
         }
     }
 
@@ -85,144 +91,123 @@ public class baseClass {
         return driver;
     }
 
-    public String captureScreenshot(String tname) {
+    public String captureScreenshot(String testName) {
         if (driver == null) {
             logger.error("Driver is not initialized");
             return "Driver not initialized, screenshot not captured";
         }
+
         String timestamp = new SimpleDateFormat("yy.MM.dd.HH.mm.ss").format(new Date());
-        TakesScreenshot takescreenshot = (TakesScreenshot) driver;
-        File source = takescreenshot.getScreenshotAs(OutputType.FILE);
-        String destination = System.getProperty("user.dir") + "\\screenshots\\" + tname + "_" + timestamp + ".png";
+        TakesScreenshot screenshot = (TakesScreenshot) driver;
+        File source = screenshot.getScreenshotAs(OutputType.FILE);
+        String destination = System.getProperty("user.dir") + "/screenshots/" + testName + "_" + timestamp + ".png";
         try {
             FileUtils.copyFile(source, new File(destination));
         } catch (IOException e) {
-            logger.error("Screenshot capture failed: " + e.getMessage());
+            logger.error("Failed to capture screenshot: " + e.getMessage());
         }
-        System.out.println(destination);
+        logger.info("Screenshot captured: " + destination);
         return destination;
     }
 
-    public void explicitwait(WebElement elm, String type) {
-        switch (type) {
-            case "visibilityof":
-                wait.until(ExpectedConditions.visibilityOf(elm));
-                break;
-            case "alertisPresent":
-                wait.until(ExpectedConditions.alertIsPresent());
-                break;
-            case "invisibilityofelement":
-                wait.until(ExpectedConditions.invisibilityOf(elm));
-                break;
-            case "visibilityoftext":
-                wait.until(ExpectedConditions.textToBePresentInElement(elm, type));
-                break;
+    public void explicitWait(WebElement element, String type) {
+        try {
+            switch (type.toLowerCase()) {
+                case "visibilityof":
+                    wait.until(ExpectedConditions.visibilityOf(element));
+                    break;
+                case "elementtobeclickable":
+                    wait.until(ExpectedConditions.elementToBeClickable(element));
+                    break;
+                case "presenceofelementlocated":
+                    wait.until(ExpectedConditions.presenceOfElementLocated((By) element));
+                    break;
+                case "alertispresent":
+                    wait.until(ExpectedConditions.alertIsPresent());
+                    break;
+                default:
+                    logger.warn("Unsupported explicit wait type: " + type);
+                    break;
+            }
+        } catch (Exception e) {
+            logger.error("Explicit wait failed: " + e.getMessage());
         }
     }
 
-    public void handleWindow(Set<String> set, String title) {
-        List<String> list = new ArrayList<>(set);
-        for (String window : list) {
-            String actTitle = driver.switchTo().window(window).getTitle();
-            if (actTitle.equals(title)) {
-                driver.switchTo().window(window);
+    public void switchToWindow(String title) {
+        Set<String> windowHandles = driver.getWindowHandles();
+        for (String windowHandle : windowHandles) {
+            driver.switchTo().window(windowHandle);
+            if (driver.getTitle().equals(title)) {
                 break;
             }
         }
     }
 
-    public void handleBrowserPopup(String msg) {
+    public void handleBrowserPopup(String message) {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments(msg);
+        options.addArguments(message);
+        driver = new ChromeDriver(options);
     }
 
-    public void windowalert(String type) {
-        Alert a = driver.switchTo().alert();
-        switch (type) {
+    public void handleAlert(String action) {
+        Alert alert = driver.switchTo().alert();
+        switch (action.toLowerCase()) {
             case "accept":
-                a.accept();
+                alert.accept();
                 break;
             case "dismiss":
-                a.dismiss();
+                alert.dismiss();
+                break;
+            default:
+                logger.warn("Unsupported alert action: " + action);
                 break;
         }
-    }
-
-    public void clickonelement(WebElement ele) {
-        try {
-            ele.click();
-        } catch (Exception e) {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeScript("arguments[0].click();", ele);
-        }
-    }
-
-    public void validateText(WebElement ele, String expectedText) {
-        String actualText = ele.getText();
-        Assert.assertEquals(actualText, expectedText);
-    }
-
-    public void validateSizeOfList(List<WebElement> list, int size) {
-        int sizeOflist = list.size();
-        Assert.assertEquals(sizeOflist, size);
-    }
-
-    @After
-    public void tearDown(Scenario s) {
-        if (s.isFailed()) {
-            captureScreenshot(s.getName());
-        }
-        driver.quit();
-        driver = null; // Reset the driver to null after quitting
-    }
-
-    public void handleFrame(String type, String value) {
-        switch (type) {
-            case "name":
-                driver.switchTo().frame(value);
-                break;
-            case "index":
-                driver.switchTo().frame(Integer.parseInt(value));
-                break;
-        }
-    }
-
-    public void explicitwaitForlist(List<WebElement> list) {
-        wait.until(ExpectedConditions.visibilityOfAllElements(list));
-    }
-    // Reusable methods for Actions class
-    public void moveToElement(WebElement element) {
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element).perform();
     }
 
     public void clickElement(WebElement element) {
-        Actions actions = new Actions(driver);
-        actions.click(element).perform();
+        try {
+            element.click();
+        } catch (StaleElementReferenceException e) {
+            logger.warn("Stale element reference exception: " + e.getMessage());
+            JavascriptExecutor executor = (JavascriptExecutor) driver;
+            executor.executeScript("arguments[0].click();", element);
+        } catch (NoSuchElementException e) {
+            logger.error("Element not found: " + e.getMessage());
+        } catch (Exception e) {
+            logger.error("Click operation failed: " + e.getMessage());
+        }
     }
 
-    public void doubleClickElement(WebElement element) {
-        Actions actions = new Actions(driver);
-        actions.doubleClick(element).perform();
+    public void validateText(WebElement element, String expectedText) {
+        String actualText = element.getText().trim();
+        Assert.assertEquals(actualText, expectedText);
     }
 
-    public void rightClickElement(WebElement element) {
-        Actions actions = new Actions(driver);
-        actions.contextClick(element).perform();
+    public void validateListSize(List<WebElement> elements, int expectedSize) {
+        int actualSize = elements.size();
+        Assert.assertEquals(actualSize, expectedSize);
     }
 
-    public void dragAndDropElement(WebElement source, WebElement target) {
-        Actions actions = new Actions(driver);
-        actions.dragAndDrop(source, target).perform();
+    @After
+    public void tearDown(Scenario scenario) {
+        if (scenario.isFailed()) {
+            String testName = scenario.getName().replaceAll(" ", "_");
+            captureScreenshot(testName);
+        }
+        if (driver != null) {
+            driver.quit();
+            driver = null; // Reset driver instance
+        } else {
+            logger.warn("WebDriver instance not found in tearDown method.");
+        }
     }
+    
+    // Additional reusable methods for Actions class can be added here
 
-    public void clickAndHoldElement(WebElement element) {
+    // Example: Method to perform mouse hover
+    public void hoverOverElement(WebElement element) {
         Actions actions = new Actions(driver);
-        actions.clickAndHold(element).perform();
-    }
-
-    public void releaseElement(WebElement element) {
-        Actions actions = new Actions(driver);
-        actions.release(element).perform();
+        actions.moveToElement(element).perform();
     }
 }
