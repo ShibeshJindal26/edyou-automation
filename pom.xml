@@ -110,26 +110,26 @@
 
             <!-- Maven Cucumber Reporting Plugin -->
             <plugin>
-                <groupId>net.masterthought</groupId>
-                <artifactId>maven-cucumber-reporting</artifactId>
-                <version>${cucumber.reporting.version}</version>
-                <executions>
-                    <execution>
-                        <id>execution</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <projectName>EdYou Automation Project</projectName>
-                            <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
-                            <jsonFiles>
-                                <param>${project.build.directory}/jsonReports/report.json</param>
-                            </jsonFiles>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+			    <groupId>net.masterthought</groupId>
+			    <artifactId>maven-cucumber-reporting</artifactId>
+			    <version>5.7.0</version>
+			    <executions>
+			        <execution>
+			            <id>execution</id>
+			            <phase>verify</phase>
+			            <goals>
+			                <goal>generate</goal>
+			            </goals>
+			            <configuration>
+			                <projectName>My Project</projectName>
+			                <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
+			                <jsonFiles>
+			                    <param>${project.build.directory}/jsonReports/report.json</param>
+			                </jsonFiles>
+			            </configuration>
+			        </execution>
+			    </executions>
+			</plugin>
         </plugins>
     </build>
 </project>
