@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,7 +39,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Default_suite" class="navigator-link">
-              <span class="suite-name border-failed">Default suite</span>
+              <span class="suite-name border-passed">Default suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\Admin\AppData\Local\Temp\testng-eclipse-2137211705\testng-customsuite.xml</span>
+                    <span>C:\Users\Admin\AppData\Local\Temp\testng-eclipse--1118140516\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -92,21 +92,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method, 1 failed,   </span>
+                    <span class="method-stats">1 method,   1 passed</span>
                   </li>
                   <li>
-                    <span class="method-list-title failed">Failed methods</span>
-                    <span class="show-or-hide-methods failed">
-                      <a href="#" panel-name="suite-Default_suite" class="hide-methods failed suite-Default_suite"> (hide)</a> <!-- hide-methods failed suite-Default_suite -->
-                      <a href="#" panel-name="suite-Default_suite" class="show-methods failed suite-Default_suite"> (show)</a> <!-- show-methods failed suite-Default_suite -->
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Default_suite" class="hide-methods passed suite-Default_suite"> (hide)</a> <!-- hide-methods passed suite-Default_suite -->
+                      <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
                     </span>
-                    <div class="method-list-content failed suite-Default_suite">
+                    <div class="method-list-content passed suite-Default_suite">
                       <span>
-                        <img src="failed.png" width="3%"/>
+                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Default_suite" title="cucumber.options.testRunner" class="method navigator-link" hash-for-method="runScenario(&quot;Request access form functionality&quot;, &quot;verify chatbot functionality&quot;)">runScenario("Request access form functionality", "verify chatbot functionality")</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content failed suite-Default_suite -->
+                    </div> <!-- method-list-content passed suite-Default_suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -118,9 +118,9 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Default_suite" class="panel Default_suite">
-          <div class="suite-Default_suite-class-failed">
+          <div class="suite-Default_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
+              <img src="passed.png"/>
               <span class="class-name">cucumber.options.testRunner</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -130,30 +130,16 @@
                   </a> <!-- runScenario("Request access form functionality", "verify chatbot functionality") -->
                   <span class="method-name">runScenario</span>
                   <span class="parameters">("Request access form functionality","verify chatbot functionality")</span>
-                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: Unable to find element with locator By.xpath: //span[@role=&apos;alert&apos;]
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: &apos;4.14.1&apos;, revision: &apos;03f8ede370&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;22.0.1&apos;
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:168)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
-	at pageObject.homePage.validate_success_message(homePage.java:256)
-	at stepDefination.homeStep.validate_success_message(homeStep.java:172)
-	at ✽.Validate success message(file:///D:/Edyou/EdYou_automation_project/./src/test/java/features/home.feature:68)
-
-</div> <!-- stack-trace -->
                   <em>
 (Runs Cucumber Scenarios)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Default_suite-class-failed -->
+          </div> <!-- suite-Default_suite-class-passed -->
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\Admin\AppData\Local\Temp\testng-eclipse-2137211705\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\Admin\AppData\Local\Temp\testng-eclipse--1118140516\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -214,12 +200,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'runScenario')
 data.setCell(0, 2, 'cucumber.options.testRunner')
-data.setCell(0, 3, 45428);
+data.setCell(0, 3, 46481);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 45 seconds</span>
+              <span class="suite-total-time">Total running time: 46 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -247,26 +233,24 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">cucumber.options.testRunner</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
-                <span class="method-name">setUpClass(org.testng.TestRunner@19bfbe28)</span>
+                <span class="method-name">setUpClass(org.testng.TestRunner@3af36922)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="configuration-class before">
                 <span class="method-name">setup</span>
-                <span class="method-start">678 ms</span>
+                <span class="method-start">918 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">runScenario("Request access form functionality", "verify chatbot functionality")</span>
-                <span class="method-start">702 ms</span>
+                <span class="method-start">951 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
-                <span class="method-name">tearDownClass</span>
-                <span class="method-start">46145 ms</span>
+                <span class="method-name">teardown</span>
+                <span class="method-start">47453 ms</span>
               </div> <!-- configuration-class after -->
               <div class="configuration-class after">
-                <span class="method-name">teardown</span>
-                <span class="method-start">46145 ms</span>
+                <span class="method-name">tearDownClass</span>
+                <span class="method-start">47459 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

@@ -245,7 +245,7 @@ public void physical_safety_page_should_be_open() {
 	    }
 	    
 	    public void click_on_request_access_button() throws InterruptedException {
-	    	WebElement elm = driver.findElement(By.xpath("//span[@class='signIn']"));
+	    	WebElement elm = driver.findElement(By.xpath("//button[@id='myButton']"));
 			explicitWait(elm, "visibilityof");
 			clickElement(elm);
 			logger.info("click on request access button");
