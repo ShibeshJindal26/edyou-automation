@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-06-22T15:21:20 IST" name="Default suite" finished-at="2024-06-22T15:21:53 IST" duration-ms="32327">
+  <suite started-at="2024-06-27T11:32:03 IST" name="Default suite" finished-at="2024-06-27T11:32:50 IST" duration-ms="46514">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumber.options.testRunner@89c10b7]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumber.options.testRunner@52c8295b]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2024-06-22T15:21:20 IST" name="Default test" finished-at="2024-06-22T15:21:53 IST" duration-ms="32327">
+    <test started-at="2024-06-27T11:32:03 IST" name="Default test" finished-at="2024-06-27T11:32:50 IST" duration-ms="46514">
       <class name="cucumber.options.testRunner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:cucumber.options.testRunner@89c10b7]" started-at="2024-06-22T15:21:21 IST" name="setUpClass" finished-at="2024-06-22T15:21:22 IST" duration-ms="916" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:cucumber.options.testRunner@52c8295b]" started-at="2024-06-27T11:32:04 IST" name="setUpClass" finished-at="2024-06-27T11:32:04 IST" duration-ms="677" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@1d91fa02]]>
+                <![CDATA[org.testng.TestRunner@19bfbe28]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:cucumber.options.testRunner@89c10b7]" started-at="2024-06-22T15:21:22 IST" name="setup" finished-at="2024-06-22T15:21:22 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:cucumber.options.testRunner@52c8295b]" started-at="2024-06-27T11:32:04 IST" name="setup" finished-at="2024-06-27T11:32:04 IST" duration-ms="6" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumber.options.testRunner@89c10b7]" started-at="2024-06-22T15:21:22 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-06-22T15:21:53 IST" duration-ms="30781" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumber.options.testRunner@52c8295b]" started-at="2024-06-27T11:32:04 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-06-27T11:32:50 IST" duration-ms="45428" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA["User should be able to maximize chat screen after clicking on maximizer."]]>
+                <![CDATA["Request access form functionality"]]>
               </value>
             </param>
             <param index="1">
@@ -38,17 +38,41 @@
               </value>
             </param>
           </params>
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[Unable to find element with locator By.xpath: //span[@role='alert']
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.14.1', revision: '03f8ede370'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '22.0.1'
+Driver info: driver.version: RemoteWebDriver]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: Unable to find element with locator By.xpath: //span[@role='alert']
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.14.1', revision: '03f8ede370'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '22.0.1'
+Driver info: driver.version: RemoteWebDriver
+at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:168)
+at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+at pageObject.homePage.validate_success_message(homePage.java:256)
+at stepDefination.homeStep.validate_success_message(homeStep.java:172)
+at ✽.Validate success message(file:///D:/Edyou/EdYou_automation_project/./src/test/java/features/home.feature:68)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="teardown()[pri:0, instance:cucumber.options.testRunner@89c10b7]" started-at="2024-06-22T15:21:53 IST" name="teardown" finished-at="2024-06-22T15:21:53 IST" duration-ms="0" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- teardown -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:cucumber.options.testRunner@89c10b7]" started-at="2024-06-22T15:21:53 IST" name="tearDownClass" finished-at="2024-06-22T15:21:53 IST" duration-ms="100" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:cucumber.options.testRunner@52c8295b]" started-at="2024-06-27T11:32:50 IST" name="tearDownClass" finished-at="2024-06-27T11:32:50 IST" duration-ms="110" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:cucumber.options.testRunner@52c8295b]" started-at="2024-06-27T11:32:50 IST" name="teardown" finished-at="2024-06-27T11:32:50 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
       </class> <!-- cucumber.options.testRunner -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

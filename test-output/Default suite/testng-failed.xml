@@ -8,8 +8,8 @@
           <include name="setUpClass"/>
           <include name="setup"/>
           <include name="teardown"/>
+          <include name="runScenario" invocation-numbers="0"/>
           <include name="tearDownClass"/>
-          <include name="runScenario" invocation-numbers="0 1 2"/>
         </methods>
       </class> <!-- cucumber.options.testRunner -->
     </classes>

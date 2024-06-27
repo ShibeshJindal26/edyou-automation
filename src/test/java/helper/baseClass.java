@@ -62,37 +62,42 @@ public class baseClass {
 
     @Before
     public void setup(Scenario scenario) throws IOException {
-    	extent = ExtentManager.getInstance();
-		test = extent.createTest(scenario.getName());
-        if (driver == null) {
-            logger.info("Setting up the driver and browser properties");
+        extent = ExtentManager.getInstance();
+        test = extent.createTest(scenario.getName());
+        setupDriver();
+        openUrl();
+    }
 
-            String browser = prop.getProperty("browser");
-            if (browser.equalsIgnoreCase("chrome")) {
-                ChromeOptions options = new ChromeOptions();
-                options.addArguments("--incognito");
-                driver = new ChromeDriver(options);
-            } else if (browser.equalsIgnoreCase("firefox")) {
-                FirefoxOptions options = new FirefoxOptions();
-                options.addArguments("--incognito");
-                driver = new FirefoxDriver(options);
-            } else if (browser.equalsIgnoreCase("edge")) {
-                EdgeOptions options = new EdgeOptions();
-                options.addArguments("--incognito");
-                driver = new EdgeDriver(options);
-            } else {
-                logger.error("Unsupported browser: " + browser);
-                throw new IllegalArgumentException("Unsupported browser: " + browser);
-            }
+    private void setupDriver() {
+        logger.info("Setting up the driver and browser properties");
 
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        String browser = prop.getProperty("browser");
+        if (browser.equalsIgnoreCase("chrome")) {
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--incognito");
+            driver = new ChromeDriver(options);
+        } else if (browser.equalsIgnoreCase("firefox")) {
+            FirefoxOptions options = new FirefoxOptions();
+            options.addArguments("--incognito");
+            driver = new FirefoxDriver(options);
+        } else if (browser.equalsIgnoreCase("edge")) {
+            EdgeOptions options = new EdgeOptions();
+            options.addArguments("--incognito");
+            driver = new EdgeDriver(options);
+        } else {
+            logger.error("Unsupported browser: " + browser);
+            throw new IllegalArgumentException("Unsupported browser: " + browser);
+        }
 
-            String url = prop.getProperty("url");
-            if (url != null && !url.isEmpty()) {
-                driver.get(url);
-            }
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    }
+
+    private void openUrl() {
+        String url = prop.getProperty("url");
+        if (url != null && !url.isEmpty()) {
+            driver.get(url);
         }
     }
 
@@ -198,29 +203,29 @@ public class baseClass {
         Assert.assertEquals(actualSize, expectedSize);
     }
 
-    
     @After
-	public void tearDown(Scenario s) {
-		try {
-	
-			if (s.isFailed()) {
-				TakesScreenshot ts = (TakesScreenshot) driver;
-				File src = ts.getScreenshotAs(OutputType.FILE);
-				File target = new File(System.getProperty("user.dir") + "/Screenshots/" + s.getName() + ".png");
-				FileUtils.copyFile(src, target);
-				 test.log(Status.FAIL, "Scenario failed: " + s.getName());
-	                test.addScreenCaptureFromPath(target.getPath());
-	            } else {
-	                test.log(Status.PASS, "Scenario passed: " + s.getName());
-	            
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			driver.quit();
-			extent.flush();
-		}
-	}
+    public void tearDown(Scenario s) {
+        try {
+            if (s.isFailed()) {
+                TakesScreenshot ts = (TakesScreenshot) driver;
+                File src = ts.getScreenshotAs(OutputType.FILE);
+                File target = new File(System.getProperty("user.dir") + "/Screenshots/" + s.getName() + ".png");
+                FileUtils.copyFile(src, target);
+                test.log(Status.FAIL, "Scenario failed: " + s.getName());
+                test.addScreenCaptureFromPath(target.getPath());
+            } else {
+                test.log(Status.PASS, "Scenario passed: " + s.getName());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (driver != null) {
+                driver.quit();
+            }
+            extent.flush();
+        }
+    }
+
     // Additional reusable methods for Actions class can be added here
 
     // Example: Method to perform mouse hover

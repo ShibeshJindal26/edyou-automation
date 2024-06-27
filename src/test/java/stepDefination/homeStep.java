@@ -2,11 +2,13 @@ package stepDefination;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.Status;
 
 import helper.baseClass;
+import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -14,12 +16,13 @@ import io.cucumber.java.en.When;
 import pageObject.*;
 import utilities.Log;
 
-@Test
+
 public class homeStep {
+	
     public static Logger logger = LogManager.getLogger(baseClass.class);
     homePage hm = new homePage(baseClass.driver);
       
-    @Test
+    
     @When("Click on maximizer")
     public void click_on_maximizer() {
     	baseClass.test.log(Status.PASS,"maximize button clicked");
@@ -136,18 +139,18 @@ public class homeStep {
         logger.debug("Response should be generate");
     }
     
-    @Test
+    
     @When("Hover on safety dropdown")
     public void Hover_on_safety_dropdown() throws InterruptedException {
     	hm.Hover_on_safety_dropdown();
     }
     
-    @Test
+   
     @And("Select physical safety")
     public void select_physical_safety() {
       hm.select_physical_safety();
     }
-    @Test
+    
     @Then("Physical safety page should be open")
     public void physical_safety_page_should_be_open() {
        hm.physical_safety_page_should_be_open();
@@ -169,3 +172,6 @@ public class homeStep {
      hm.validate_success_message();
     }
 }
+
+    
+

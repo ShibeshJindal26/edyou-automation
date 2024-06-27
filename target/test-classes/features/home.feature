@@ -1,6 +1,6 @@
 Feature: verify chatbot functionality
 
-  @test
+  @sanity
   Scenario: User should be able to maximize chat screen after clicking on maximizer.
     When Click on maximizer
     Then Minimizer should be displayed
@@ -41,7 +41,7 @@ Feature: verify chatbot functionality
     And Click on unmute button
     Then Audio waves should be displayed
 
- 
+  
   Scenario: Mic button should be working
     When Click on mic button
     Then Mic button should be enable
@@ -54,13 +54,13 @@ Feature: verify chatbot functionality
     Then Response should be generate
     
      
-     @sanity
+   
    Scenario: Check safety dropdown functionality
    When Hover on safety dropdown
    And Select physical safety
    Then Physical safety page should be open
    
-    @sanity
+    @test
    Scenario: Request access form functionality
    When Click on investor area
    And Fill all required field

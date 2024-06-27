@@ -229,27 +229,27 @@ public void physical_safety_page_should_be_open() {
 	 
 	    public void fill_all_required_field() throws InterruptedException {
 	    	WebElement firstName = driver.findElement(By.xpath("//input[@placeholder='First Name']"));
-	    	 firstName.sendKeys("Laxman");
+	    	 firstName.sendKeys("Shibesh");
 	    	WebElement lastName = driver.findElement(By.xpath("//input[@placeholder='Last Name']"));
-	    	lastName.sendKeys("singh");
+	    	lastName.sendKeys("Jindal");
 	    	WebElement email = driver.findElement(By.xpath("//input[@placeholder='Email']"));
-	    	email.sendKeys("lax@gmail.com");
+	    	email.sendKeys("shibesh.vdoit@gmail.com");
 	    	WebElement phoneNumber = driver.findElement(By.xpath("//input[@placeholder='Phone']"));
 	    	phoneNumber.sendKeys("237874874333");
 	    	WebElement companyName = driver.findElement(By.xpath("//input[@placeholder='Company Name']"));
-	    	companyName.sendKeys("microsoft");
+	    	companyName.sendKeys("VDOIT");
 	    	WebElement Dsc = driver.findElement(By.xpath("//textarea[@placeholder='Tell us about yourself.']"));
-	    	Dsc.sendKeys("I'm student");
+	    	Dsc.sendKeys("I'm a QA Analyst");
 	    	
 	    	
 	    }
-	   
+	    
 	    public void click_on_request_access_button() throws InterruptedException {
 	    	WebElement elm = driver.findElement(By.xpath("//span[@class='signIn']"));
 			explicitWait(elm, "visibilityof");
 			clickElement(elm);
 			logger.info("click on request access button");
-	        Thread.sleep(5000);
+	        Thread.sleep(2000);
 	    }
 	    
 	    public void validate_success_message() {
